@@ -8,11 +8,17 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.photobook.util.JSONParser;
+
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,6 +34,7 @@ public class SignUp extends Activity {
 	Button signUp;
 	EditText username, password, passwordConfirm;
 	String userName, userPwd, userPwdConfirm;
+	final Context context = this;
 	
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -68,16 +75,18 @@ public class SignUp extends Activity {
 				
 				/*Check for matching passwords*/
 				if(userPwd.equals(userPwdConfirm)){
-					/*if (username is unique)
-					 *		{add username and password to database} 
-					 *else{
-					 *Toast.makeText(SignUp.this, "Username already exists", Toast.LENGTH_LONG).show();
-					 *}*/	
 					
-					new CreateNewUser().execute();
+					 if(!TextUtils.isEmpty(userName) && userName.length() >=6 && !TextUtils.isEmpty(userPwd) && userPwd.length() >= 6) 
+					 {				 
+						new CreateNewUser().execute();
+					 } 
+					 else 
+					 {
+						showDialog("Sign Up for PhotoBook", "User name and password has to be at least 6 character long");			
+					 }
 				}
 				else{
-					Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_LONG).show();
+					showDialog("Sign Up for PhotoBook", "Passwords do not match");
 				}
 				
 			}
@@ -85,7 +94,7 @@ public class SignUp extends Activity {
 	}
 
 	/**
-	†Background Async Task to Create new product
+	†Background Async Task to Create new user
 	†* */
 	class CreateNewUser extends AsyncTask<String, String, String> {
 
@@ -114,37 +123,69 @@ public class SignUp extends Activity {
 			// check log cat from response
 			Log.d("Create Response", json.toString());
 			
+			String result = null;
 			// check for success tag
 			try {
 				int success = json.getInt(TAG_SUCCESS);
 				if (success == 1) {
-					Log.d("User Created!", json.toString());
+					
+					String welcomemessage = json.getString(TAG_MESSAGE);
 					/*Open login screen*/
 					Intent openStream = new Intent(SignUp.this, PictureStream.class);
+<<<<<<< HEAD
+					openStream.putExtra("welcome", welcomemessage);
+=======
 					openStream.putExtra("username", userName);
+>>>>>>> origin/pr/5
 					startActivity(openStream);
 					
 					// closing this screen
 					finish();
-					return json.getString(TAG_MESSAGE);
-					
-				} else {
-					Log.d("Registering Failure!", json.getString(TAG_MESSAGE));
-					return json.getString(TAG_MESSAGE);
-				}
+					result = welcomemessage;
+				} else result = json.getString(TAG_MESSAGE);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			
-			return null;	
+			return result;	
 		}
 		
 		//After completing background task Dismiss the progress dialog
 		
-		protected void onPostExecute(String file_url) {
+		protected void onPostExecute(String result) {
 			pDialog.dismiss();
+		
+			if ("User already exists".equals(result)) {
+				showDialog("Sign Up" , result);			
+			}
+			else if (!"Account successfully created".equals(result)) {
+				
+				showDialog("Sign Up" , "Oops! An error occurred");
+			}
+			
 		}
 		
 	}
 	
+	private void showDialog(String title, String message) {
+		
+		AlertDialog.Builder aDialog = new AlertDialog.Builder(SignUp.this);
+					// set title
+		aDialog.setTitle(title);
+		
+		// set dialog message
+		aDialog
+		.setMessage(message)
+		.setCancelable(false)
+		.setNegativeButton("Ok",new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog,int id) {
+				dialog.cancel();
+		}
+		});
+		// create alert dialog
+		AlertDialog alertDialog = aDialog.create();
+		// show it
+		alertDialog.show();
+		Toast.makeText(SignUp.this, message, Toast.LENGTH_LONG).show();
+	}
 }

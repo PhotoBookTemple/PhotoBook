@@ -14,7 +14,10 @@
     <item name="white" type="color">#FFFFFF</item>
     <item name="gold" type="color">#FFBF00</item>
      <item name="lightgold" type="color">#F3E2A9</item>
-     <item name="cream" type="color">#F5ECCE</item>
+     <item name="cream" type="color">#FBFBEF</item>
+     <item name="brown" type="color">#61380B</item>
+     <item name="black" type="color">#000000</item>
+     
    
  
     <integer-array name="androidcolors">
@@ -32,6 +35,8 @@
         <item>@color/gold</item>
         <item>@color/lightgold</item>
         <item>@color/cream</item>
+         <item>@color/brown</item>
+         <item>@color/black</item>
     </integer-array>
  
 </resources> 
