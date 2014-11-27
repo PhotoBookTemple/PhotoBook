@@ -132,7 +132,11 @@ public class SignUp extends Activity {
 					String welcomemessage = json.getString(TAG_MESSAGE);
 					/*Open login screen*/
 					Intent openStream = new Intent(SignUp.this, PictureStream.class);
+<<<<<<< HEAD
 					openStream.putExtra("welcome", welcomemessage);
+=======
+					openStream.putExtra("username", userName);
+>>>>>>> origin/pr/5
 					startActivity(openStream);
 					
 					// closing this screen

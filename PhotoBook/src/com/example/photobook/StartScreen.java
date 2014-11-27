@@ -140,6 +140,20 @@ public class StartScreen extends Activity {
 					
 					finish();
 					
+<<<<<<< HEAD
+=======
+					/*if(username in database & password is correct){
+					 
+					 	Start picture book if success*/
+						Intent openPictureBook = new Intent(StartScreen.this, PictureStream.class);
+						openPictureBook.putExtra("username", usernameS);
+						startActivity(openPictureBook);
+						
+					/*else if(username not in database){*/
+						Toast.makeText(StartScreen.this, "Username does not exist", Toast.LENGTH_LONG).show();
+					/*else if(password incorrect)*/
+						Toast.makeText(StartScreen.this, "Password incorrect", Toast.LENGTH_LONG).show();
+>>>>>>> origin/pr/5
 					
 				}
 			} catch (JSONException e) {

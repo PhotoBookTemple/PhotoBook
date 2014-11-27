@@ -46,7 +46,14 @@ public class PictureStream extends Activity {
 	Uri imageUri;
 	boolean firsttime = true;
 	
+<<<<<<< HEAD
 	String photoString, photoName;
+=======
+	
+	String photoString, userName;
+	
+	
+>>>>>>> origin/pr/5
 	
 	int TAKE_PICTURE_REQUEST_CODE = 123456;
 	int userID = 1999;
@@ -78,6 +85,7 @@ public class PictureStream extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+<<<<<<< HEAD
 		
 		if(firsttime){
 			firsttime = false;
@@ -88,6 +96,9 @@ public class PictureStream extends Activity {
 			showDialog("Welcome to PhotoBook", welcome);
 		}
 		
+=======
+		userName = String.valueOf(getIntent().getStringExtra("username"));
+>>>>>>> origin/pr/5
 		imageStream = (GridLayout) findViewById(R.id.imageStream);
 		
 		/*Check for local directory of photos, if not create one*/
