@@ -52,13 +52,14 @@ public class PictureStream extends Activity {
 
 	int TAKE_PICTURE_REQUEST_CODE = 123456;
 	
-	
+/*START MOLLY*/
 	/*Create menu with new photo option, logout, and refresh?*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -76,16 +77,23 @@ public class PictureStream extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
+/*END MOLLY*/	
+	
+/*START SUSHMA*/
 	Handler streamHandler = new Handler(new Handler.Callback() {
-		
+/*END SUSHMA*/		
 		@Override
 		public boolean handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			try {
+				
+/*START MOLLY*/
 				JSONArray picturesJson = (JSONArray)msg.obj;
 				
+				if(picturesJson != null){
 				for(int i = 0; i < picturesJson.length(); i++){
 					putPhotoInLayout(picturesJson.getJSONObject(i));
+				}
 				}
 				
 				
@@ -95,6 +103,7 @@ public class PictureStream extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+/*END MOLLY*/			
 			return false;
 		}
 	});
@@ -105,6 +114,8 @@ public class PictureStream extends Activity {
 		setContentView(R.layout.activity_main);
 		firsttime = false;
 		//Show Welcome Message
+		
+/*START NEIL*/
 		GlobalPhoto globalVariable = (GlobalPhoto)getApplicationContext();
 		userName = globalVariable.getUserName();
 		userID = globalVariable.getUserID();
@@ -115,7 +126,9 @@ public class PictureStream extends Activity {
 			
 			globalVariable.setAgain(true);
 		}
+/*END NEIL*/		
 		
+/*START MOLLY*/
 		imageStream = (LinearLayout) findViewById(R.id.imageStream);
 		
 		/*Check for local directory of photos, if not create one*/
@@ -134,23 +147,14 @@ public class PictureStream extends Activity {
 		}
 	}
 	
+	
 	private void loadStream() throws InterruptedException, ExecutionException{
 		//	Use JSON Parser to load stream. Add each to layout with putPhotoInLayout	
 		
 		new jSonLoader(this).execute().get();
-//		try {
-//			JSONArray picturesJson = httpReq.getPhotos(this, userName);
-//			
-//			for(int i = 0; i < picturesJson.length(); i++){
-//				putPhotoInLayout(picturesJson.getJSONObject(i));
-//			}
-//	
-//		} catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-			
+		
 	}
+
 	class jSonLoader extends AsyncTask<String, String, String>{
 		private Context mContext;
 		public  jSonLoader(Context context){
@@ -164,16 +168,6 @@ public class PictureStream extends Activity {
 				Message msg = Message.obtain();
 				msg.obj = picturesJson;
 				streamHandler.sendMessage(msg);
-				
-				
-//				if(picturesJson != null){
-//				for(int i = 0; i < picturesJson.length(); i++){
-//					
-//					Message msg = Message.obtain();
-//					msg.obj = picturesJson.getJSONObject(i);
-//					streamHandler.sendMessage(msg);
-//				}
-//				}
 		
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -183,6 +177,7 @@ public class PictureStream extends Activity {
 		}
 		
 	}
+	
 	
 	
 	private View putPhotoInLayout(final JSONObject photoObject) throws JSONException{
@@ -224,6 +219,8 @@ public class PictureStream extends Activity {
 	}
 	
 	/*Take a picture*/
+	
+	
 	private void takePicture(){
 	
 		Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -237,6 +234,8 @@ public class PictureStream extends Activity {
 	}
 	
 	/*When picture is returned, open picture editor*/
+	
+	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK && requestCode == TAKE_PICTURE_REQUEST_CODE) {
@@ -251,6 +250,7 @@ public class PictureStream extends Activity {
 	
 	}
 	
+	
 	private void openPictureViewer(String photoJson){
 	//send photo uri as intent to picture viewer
 
@@ -259,6 +259,7 @@ public class PictureStream extends Activity {
 		startActivity(openViewer);
 		
 	}
+	
 	
 	private void initialzeLoader(){
 		/*Initialize image loader*/
@@ -284,7 +285,9 @@ public class PictureStream extends Activity {
         .build();
 		ImageLoader.getInstance().init(config);
 	}
+/*END MOLLY*/	
 	
+/*START NEIL*/
 	private void showDialog(String title, String message) {
 		
 		AlertDialog.Builder aDialog = new AlertDialog.Builder(PictureStream.this);
@@ -306,10 +309,13 @@ public class PictureStream extends Activity {
 		alertDialog.show();
 		Toast.makeText(PictureStream.this, message, Toast.LENGTH_LONG).show();
 	}
+/*END NEIL*/	
 	
+/*START MOLLY*/
 	@Override
 	public void onBackPressed() {
 	}
+/*END MOLLY*/	
 	
 	
 	

@@ -34,7 +34,7 @@ import android.content.Context;
 import android.net.http.AndroidHttpClient;
 import android.util.Log;
 
-
+/*Taken from reference*/
 public class httpReq {
 	static final String APIBaseURL = "http://cis-linux2.temple.edu/~tuf77221";
 	 /**
@@ -75,9 +75,10 @@ public class httpReq {
     		method.addHeader("Accept-Encoding", "gzip");
     		httpResponse = client.execute(method);
     	} else {
+ /*START SUSHMA*/   		
     		List<NameValuePair> params = new ArrayList<NameValuePair>();
     		params.add(new BasicNameValuePair("userID", String.valueOf(userID)));
-String paramString = URLEncodedUtils.format(params, "utf-8");
+    		String paramString = URLEncodedUtils.format(params, "utf-8");
     		String url = APIBaseURL + api+ "?" + paramString;
 
     		HttpGet method = new HttpGet(url);
@@ -85,6 +86,7 @@ String paramString = URLEncodedUtils.format(params, "utf-8");
     		method.addHeader("Accept-Encoding", "gzip");
 
     		httpResponse = client.execute(method);
+ /*END SUSHMA*/   		
     	}
         
     	String response = extractHttpResponse(httpResponse);
@@ -170,6 +172,7 @@ String paramString = URLEncodedUtils.format(params, "utf-8");
         return response.toString();
     }
     
+    /*START SUSHMA*/
     public static boolean uploadPhotos(Context context, int userID, String photoName, String photoCaption, String photoPath, String timeStamp, String gpsLocation, String locAltitude, String locTemp, File image) throws Exception{
         JSONObject requestObject = new JSONObject();
         requestObject.put("userID", userID);
@@ -223,6 +226,6 @@ String paramString = URLEncodedUtils.format(params, "utf-8");
     	POST, GET, PUT, DELETE
     }
 
-
+/*END SUSHMA*/
 	
 }

@@ -6,6 +6,7 @@
      android:background="@drawable/background2" 
      android:layout_centerVertical = "true" >
 
+    <!-- MOLLY -->
     <TextView
         android:id="@+id/chooseUsername"
         android:layout_width="wrap_content"

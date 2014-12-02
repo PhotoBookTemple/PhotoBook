@@ -8,6 +8,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
+/*START SUSHMA*/
 public class UploadService extends IntentService{
 
 	public static final String image = "image", directory = "directory", photoCaption = "photoCaption",

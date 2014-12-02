@@ -2,6 +2,7 @@ package com.example.photobook;
 
 import android.app.Application;
 
+/*START NEIL*/
 public class GlobalPhoto extends Application{
 
 	private String userName;
@@ -40,5 +41,5 @@ public class GlobalPhoto extends Application{
 	public void setAgain(boolean uAgain) {
 		again = uAgain;
 	}
-	
+/*END NEIL*/	
 }

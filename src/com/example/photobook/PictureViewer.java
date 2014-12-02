@@ -46,6 +46,7 @@ public class PictureViewer extends Activity {
 	
 	JSONParser jsonParse = new JSONParser();
 	
+/*START MOLLY*/
 	/*Create menu with back button*/
 		@Override
 		public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,6 +67,7 @@ public class PictureViewer extends Activity {
 		}
 		
 	
+		
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.picture_viewer);
@@ -143,5 +145,5 @@ public class PictureViewer extends Activity {
         .build();
 		ImageLoader.getInstance().init(config);
 	}
-
+/*END MOLLY*/
 }

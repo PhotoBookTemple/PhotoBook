@@ -118,6 +118,7 @@ public class PictureEditor extends Activity implements LocationListener, GoogleP
 	
 	String url = "http://forecast.weather.gov/MapClick.php?lat=";
 	
+/*START SUSHMA*/
 	//Handler for weather reading
 final Handler showContent = new Handler(new Handler.Callback() {
 		
@@ -144,8 +145,9 @@ final Handler showContent = new Handler(new Handler.Callback() {
 			return false;
 		}
 });
+/*END SUSHMA*/
 
-	
+/*START MOLLY*/
 	/*Create menu with save and delete*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -178,11 +180,13 @@ final Handler showContent = new Handler(new Handler.Callback() {
 	}
 	
 	
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.picture_editor);
 		locationClient = new LocationClient(this, (ConnectionCallbacks) this, this);
 		
+
 		/*Initialize image loader*/
 		ImageLoader imageLoader;
 		DisplayImageOptions displayOptions;
@@ -212,9 +216,9 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		/*Initialize caption field and layout*/
 		captionField = (EditText) findViewById(R.id.captionText);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.pictureEditorLayout);
-
-	
+/*END MOLLY*/
 		
+/*START SUSHMA*/		
 		/*Get photo from intent*/
 		photoUri = getIntent().getStringExtra("photoUri");
 		photoName = getIntent().getStringExtra("photoName");
@@ -230,7 +234,10 @@ final Handler showContent = new Handler(new Handler.Callback() {
 	photoName = fileName;
 	
 	String imageUri = getIntent().getStringExtra("imageUri");
-		
+/*END SUSHMA*/
+	
+	
+/*START MOLLY*/	
 		/* Display photo */
 		photoView = new ImageView(this);
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
@@ -243,13 +250,14 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		ImageLoader.getInstance().displayImage(imageUri, photoView);
 
 		layout.addView(photoView);	
+/*END MOLLY*/		
 
 	}
 	
 	
 	JSONObject photoJson;
 	
-	
+/*START SUSHMA*/	
 	/*Save caption and take picture to information gathering service*/
 	private void saveClicked() throws InterruptedException, ExecutionException, JSONException{
 		photoCaption = captionField.getText().toString();
@@ -267,6 +275,7 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		
 	}
 	
+	
 	private void uploadPhoto() throws InterruptedException, ExecutionException, JSONException{
 		
 		Intent uploadPhotobookIntent = new Intent(this, UploadService.class);
@@ -282,7 +291,7 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		uploadPhotobookIntent.putExtra(UploadService.locTemp,locTemp);
 		startService(uploadPhotobookIntent);
 		Toast.makeText(this, "Uploading Photo", Toast.LENGTH_SHORT).show();
-		//String result = new Upload(this).execute().get();
+		
 		JSONObject photoJson = new JSONObject();
 		photoJson.put("userID", userID);
 		photoJson.put("photoCaption", photoCaption);
@@ -299,48 +308,8 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		
 	}
 
-	
-	
-	class Upload extends AsyncTask<String, String, String>{
-		private Context mContext;
-		public  Upload(Context context){
-			mContext = context;
-		}
 
-		@Override
-		protected String doInBackground(String... params) {
-			try {
-//				photoJson = httpReq.uploadPhotos(mContext, 
-//						userID,
-//				photoName, photoPath, photoCaption,
-//				timeStamp, gpsLocation,locAltitude,
-//				locTemp, new File(photo.getAbsolutePath()));
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Intent pictureViewerIntent = new Intent(mContext, PictureViewer.class);
-			try {
-				pictureViewerIntent.putExtra("photoUri", photoJson.getString("photoPath"));
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			startActivity(pictureViewerIntent);
-			return null;
-		}
-//		protected void onPostExecute(String result) {
-//			Intent pictureViewerIntent = new Intent(mContext, PictureViewer.class);
-//			try {
-//				pictureViewerIntent.putExtra("photoUri", photoJson.getString("photoPath"));
-//			} catch (JSONException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			startActivity(pictureViewerIntent);
-//		}
-		
-	}
+
 	
 	
 	/*Delete picture and restart - go back to stream?*/
@@ -521,5 +490,6 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		(Toast.makeText(this, "Connection unsuccessful" + result.toString(), Toast.LENGTH_LONG)).show();
 
 	}
-
+	
+/*END SUSHMA*/
 }
