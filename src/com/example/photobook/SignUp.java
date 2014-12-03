@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -63,6 +64,12 @@ public class SignUp extends Activity {
 		username = (EditText) findViewById(R.id.newUsername);
 		password = (EditText) findViewById(R.id.newPassword);
 		passwordConfirm = (EditText) findViewById(R.id.newPasswordConfirm);
+		
+		//START SUSHMA
+		InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(
+			      Context.INPUT_METHOD_SERVICE);
+		inputMethodMgr.hideSoftInputFromWindow(username.getWindowToken(), 0);
+		//END SUSHMA
 		
 		/*Complete sign up*/
 		signUp.setOnClickListener(new View.OnClickListener() {

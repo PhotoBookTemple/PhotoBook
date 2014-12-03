@@ -191,6 +191,7 @@ public class PictureStream extends Activity {
 
 		ImageView photoImageView = new ImageView(this);
 		ImageLoader.getInstance().displayImage(photoObject.getString("photoPath"), photoImageView);
+		Log.i("photo url in picture stream - get photos", photoObject.getString("photoPath"));
 		photoImageView.setBackgroundResource(R.drawable.photobackground);
 		lp.setMargins(50, 10, 50, 20);
 		photoImageView.setLayoutParams(lp);
@@ -314,9 +315,15 @@ public class PictureStream extends Activity {
 /*END NEIL*/	
 	
 /*START MOLLY*/
+
 	@Override
 	public void onBackPressed() {
+		//START SUSHMA
+		super.onBackPressed(); 
+		finish(); 
+		//END SUSHMA
 	}
+
 /*END MOLLY*/	
 	
 	

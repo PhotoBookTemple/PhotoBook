@@ -63,7 +63,15 @@ import com.example.photobook.UploadService;
 
 
 
+
+
+
+
+
+
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -83,6 +91,8 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore.Images.Media;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -93,6 +103,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.view.ViewGroup.LayoutParams;
+import android.view.inputmethod.InputMethodManager;
 
 /*Once picture is taken, this screen will display picture and information. It will allow user to 
  * write a caption and then save the picture. User clicks save to send all information to database. User
@@ -179,7 +190,13 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		}
 	}
 	
-	
+	//START SUSHMA
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed(); 
+		finish(); 
+	}
+	//END SUSHMA
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -220,6 +237,9 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		
 /*START SUSHMA*/		
 		/*Get photo from intent*/
+		
+		
+		
 		photoUri = getIntent().getStringExtra("photoUri");
 		photoName = getIntent().getStringExtra("photoName");
 		File storageDirectory = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name));
@@ -268,11 +288,7 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		    
 		timeStamp = strDate;
 		Toast.makeText(this, "Uploading Photo", Toast.LENGTH_SHORT).show();
-		uploadPhoto();
-		
-
-
-		
+		uploadPhoto();		
 	}
 	
 	
@@ -302,15 +318,13 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		
 		//Pass local photo uri to load picture in picture viewer
 		photoJson.put("photoPath", getIntent().getStringExtra("imageUri"));
-		Intent pictureViewerIntent = new Intent(PictureEditor.this, PictureViewer.class);
+		Intent pictureViewerIntent = new Intent(PictureEditor.this, PictureViewer.class);				
 		pictureViewerIntent.putExtra("photoJson", photoJson.toString());
 		startActivity(pictureViewerIntent);
 		
 	}
 
 
-
-	
 	
 	/*Delete picture and restart - go back to stream?*/
 	private void delete(){

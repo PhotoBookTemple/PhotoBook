@@ -34,7 +34,7 @@ import android.content.Context;
 import android.net.http.AndroidHttpClient;
 import android.util.Log;
 
-/*Taken from reference*/
+/*START SUSHMA */
 public class httpReq {
 	static final String APIBaseURL = "http://cis-linux2.temple.edu/~tuf77221";
 	 /**
@@ -171,6 +171,7 @@ public class httpReq {
         Log.i("extractHttp", response.toString());
         return response.toString();
     }
+    /*END SUSHMA*/   
     
     /*START SUSHMA*/
     public static boolean uploadPhotos(Context context, int userID, String photoName, String photoCaption, String photoPath, String timeStamp, String gpsLocation, String locAltitude, String locTemp, File image) throws Exception{

@@ -121,6 +121,14 @@ public class PictureViewer extends Activity {
 		
 	}
 	
+	//START SUSHMA
+	@Override
+	public void onBackPressed() {
+		super.onBackPressed(); 
+		finish(); 
+	}
+	//END SUSHMA
+	
 	private void initialzeLoader(){
 		/*Initialize image loader*/
 		ImageLoader imageLoader;
