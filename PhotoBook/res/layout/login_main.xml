@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}"
+   android:background="@drawable/background" >
+
+    <TextView
+        android:id="@+id/accountText"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/signUp"
+        android:layout_marginLeft="250dp"
+        android:text="Don&apos;t have an account?"
+        android:textColor="@color/orange"
+        android:textColorLink="@color/gold" />
+
+    <TextView
+        android:id="@+id/confirmPasswordText"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/chooseUsername"
+        android:layout_below="@+id/password"
+        android:text="Password:"
+        android:textColor="@color/gold" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/password"
+        android:layout_below="@+id/confirmPasswordText"
+        android:ems="10"
+        android:textColor="@color/white"
+        android:textColorLink="@color/gold" />
+
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/login"
+        android:layout_marginRight="75dp"
+        android:text="Sign Up!"
+        android:textColor="@color/lightgold"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/signUp"
+        android:layout_below="@+id/chooseUsername"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:textColor="@color/white"
+        android:textColorLink="@color/gold" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/username"
+        android:text="Login"
+        android:textColor="@color/lightgold"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/chooseUsername"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_centerVertical="true"
+        android:text="Username:"
+        android:textColor="@color/gold"
+        android:textColorLink="@color/gold" />
+
+</RelativeLayout>
