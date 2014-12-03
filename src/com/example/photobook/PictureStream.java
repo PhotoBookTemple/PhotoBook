@@ -318,10 +318,7 @@ public class PictureStream extends Activity {
 
 	@Override
 	public void onBackPressed() {
-		//START SUSHMA
-		super.onBackPressed(); 
-		finish(); 
-		//END SUSHMA
+	
 	}
 
 /*END MOLLY*/	

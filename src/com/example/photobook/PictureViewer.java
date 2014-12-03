@@ -124,8 +124,7 @@ public class PictureViewer extends Activity {
 	//START SUSHMA
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed(); 
-		finish(); 
+		 
 	}
 	//END SUSHMA
 	

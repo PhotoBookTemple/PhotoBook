@@ -193,8 +193,8 @@ final Handler showContent = new Handler(new Handler.Callback() {
 	//START SUSHMA
 	@Override
 	public void onBackPressed() {
-		super.onBackPressed(); 
-		finish(); 
+		/*super.onBackPressed(); 
+		finish(); */
 	}
 	//END SUSHMA
 	

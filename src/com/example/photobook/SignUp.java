@@ -65,12 +65,7 @@ public class SignUp extends Activity {
 		password = (EditText) findViewById(R.id.newPassword);
 		passwordConfirm = (EditText) findViewById(R.id.newPasswordConfirm);
 		
-		//START SUSHMA
-		InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(
-			      Context.INPUT_METHOD_SERVICE);
-		inputMethodMgr.hideSoftInputFromWindow(username.getWindowToken(), 0);
-		//END SUSHMA
-		
+			
 		/*Complete sign up*/
 		signUp.setOnClickListener(new View.OnClickListener() {
 			

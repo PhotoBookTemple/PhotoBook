@@ -80,7 +80,7 @@ public class httpReq {
     		params.add(new BasicNameValuePair("userID", String.valueOf(userID)));
     		String paramString = URLEncodedUtils.format(params, "utf-8");
     		String url = APIBaseURL + api+ "?" + paramString;
-
+    		Log.i("get url", url);
     		HttpGet method = new HttpGet(url);
 
     		method.addHeader("Accept-Encoding", "gzip");

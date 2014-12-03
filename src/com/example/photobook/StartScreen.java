@@ -66,12 +66,7 @@ public class StartScreen extends Activity {
 		username = (EditText) findViewById(R.id.username);
 		password = (EditText) findViewById(R.id.password);
 		
-		//START SUSHMA
-		InputMethodManager inputMethodMgr = (InputMethodManager)getSystemService(
-			      Context.INPUT_METHOD_SERVICE);
-		inputMethodMgr.hideSoftInputFromWindow(username.getWindowToken(), 0);
-		//END SUSHMA
-		
+				
 		 /*Sign up button clicked*/
 		 signUp.setOnClickListener(new View.OnClickListener() {
 			
