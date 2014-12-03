@@ -134,7 +134,7 @@ public class SignUp extends Activity {
 					userID =Integer.parseInt(json.getString(TAG_MESSAGE));
 					/*Open login screen*/
 					Intent openStream = new Intent(SignUp.this, PictureStream.class);
-					
+					openStream.putExtra("login", 01);
 					startActivity(openStream);
 					
 					// closing this screen
@@ -165,7 +165,7 @@ public class SignUp extends Activity {
 			globalVariable.setUserID(userID);
 			globalVariable.setUserName(userName);
 			globalVariable.setMessage("Welcome to PhotoBook");
-			
+			globalVariable.setAgain(true);
 		}
 		
 	}

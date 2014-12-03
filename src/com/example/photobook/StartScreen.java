@@ -133,6 +133,7 @@ public class StartScreen extends Activity {
 					result = welcomemessage;
 					/*Open login screen*/
 					Intent openPictureBook = new Intent(StartScreen.this, PictureStream.class);
+					openPictureBook.putExtra("login", 00);
 					startActivity(openPictureBook);
 					
 				}
@@ -155,7 +156,7 @@ public class StartScreen extends Activity {
 			globalVariable.setUserID(userID);
 			globalVariable.setUserName(userName);
 			globalVariable.setMessage("Welcome to PhotoBook");
-			
+			globalVariable.setAgain(true);
 		}
 		
 	}

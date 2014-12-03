@@ -120,11 +120,13 @@ public class PictureStream extends Activity {
 		userName = globalVariable.getUserName();
 		userID = globalVariable.getUserID();
 		
-		if(!globalVariable.getAgain()) {
+		if(globalVariable.getAgain()) {
 			String welcome = globalVariable.getMessage();
-			showDialog(welcome, "Take your first picture");
+			if(getIntent().getStringExtra("login") == "01") {
+				showDialog(welcome, "Take your first picture");
+			} else showDialog(welcome, "Welcome back");
 			
-			globalVariable.setAgain(true);
+			globalVariable.setAgain(false);
 		}
 /*END NEIL*/		
 		
