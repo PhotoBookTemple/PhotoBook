@@ -1,1 +1,1 @@
-This is a Photobook App. User can take picture and save with a caption. Application will show some relevant information when. It will display information such as timestamp and temperature of when picture was taken, altitude and location of where picture was taken.
+This is a Photobook App. User can take picture and save with a caption. Application will show some relevant information. It will display information such as timestamp and temperature of when picture was taken, altitude and location of where picture was taken.
