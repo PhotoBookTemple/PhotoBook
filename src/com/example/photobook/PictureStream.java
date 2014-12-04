@@ -137,9 +137,9 @@ public class PictureStream extends Activity {
 		photoStorage = new File(Environment.getExternalStorageDirectory() + "/" + getString(R.string.app_name));
 			photoStorage.mkdir();
 		
-		
 		try {
 			loadStream();
+		//	Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,6 +154,7 @@ public class PictureStream extends Activity {
 		//	Use JSON Parser to load stream. Add each to layout with putPhotoInLayout	
 		
 		new jSonLoader(this).execute().get();
+		
 		
 	}
 
@@ -184,22 +185,18 @@ public class PictureStream extends Activity {
 	
 	private View putPhotoInLayout(final JSONObject photoObject) throws JSONException{
 		//Switch to stream??
-		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.FILL_PARENT);
+		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(750, 1000);
 		initialzeLoader();
 
 		ImageView photoImageView = new ImageView(this);
 		ImageLoader.getInstance().displayImage(photoObject.getString("photoPath"), photoImageView);
 		Log.i("photo url in picture stream - get photos", photoObject.getString("photoPath"));
 		photoImageView.setBackgroundResource(R.drawable.photobackground);
-		lp.setMargins(50, 10, 50, 20);
+		lp.setMargins(25, 10, 25, 10);
 		photoImageView.setLayoutParams(lp);
 
-		photoImageView.setPadding(70, 0, 70, 0);
-
-		
-		
+		photoImageView.setPadding(15, 15, 15, 15);
+	
 		String photoURL = photoObject.getString("photoPath");
 
 		// Check correct field of JSON Object
