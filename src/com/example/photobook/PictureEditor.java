@@ -114,10 +114,6 @@ public class PictureEditor extends Activity implements LocationListener, GoogleP
 	
 	EditText captionField;
 	ImageView photoView;
-
-	 
-
-
 	File photo;
 	String photoCaption, photoName, photoPath, timeStamp, gpsLocation, locAltitude, locTemp;
  	private String photoString;
@@ -129,9 +125,9 @@ public class PictureEditor extends Activity implements LocationListener, GoogleP
 	
 	String url = "http://forecast.weather.gov/MapClick.php?lat=";
 	
-/*START SUSHMA*/
+	/*START SUSHMA*/
 	//Handler for weather reading
-final Handler showContent = new Handler(new Handler.Callback() {
+	final Handler showContent = new Handler(new Handler.Callback() {
 		
 		@Override
 		public boolean handleMessage(Message msg) {
@@ -155,10 +151,10 @@ final Handler showContent = new Handler(new Handler.Callback() {
 				}
 			return false;
 		}
-});
-/*END SUSHMA*/
+	});
+	/*END SUSHMA*/
 
-/*START MOLLY*/
+	/*START MOLLY*/
 	/*Create menu with save and delete*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -233,9 +229,9 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		/*Initialize caption field and layout*/
 		captionField = (EditText) findViewById(R.id.captionText);
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.pictureEditorLayout);
-/*END MOLLY*/
+		/*END MOLLY*/
 		
-/*START SUSHMA*/		
+		/*START SUSHMA*/		
 		/*Get photo from intent*/
 		
 		
@@ -249,15 +245,14 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		userName = globalVariable.getUserName();
 		userID = globalVariable.getUserID();
 		
-	String fileName = photoName + ".jpg";
-	photo = new File(photoUri); // Temporary file name
-	photoName = fileName;
+		String fileName = photoName + ".jpg";
+		photo = new File(photoUri); // Temporary file name
+		photoName = fileName;
+		
+		String imageUri = getIntent().getStringExtra("imageUri");
+		/*END SUSHMA*/
 	
-	String imageUri = getIntent().getStringExtra("imageUri");
-/*END SUSHMA*/
-	
-	
-/*START MOLLY*/	
+		/*START MOLLY*/	
 		/* Display photo */
 		photoView = new ImageView(this);
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
@@ -270,27 +265,24 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		ImageLoader.getInstance().displayImage(imageUri, photoView);
 
 		layout.addView(photoView);	
-/*END MOLLY*/		
-
+		/*END MOLLY*/		
 	}
-	
 	
 	JSONObject photoJson;
 	
-/*START SUSHMA*/	
+	/*START SUSHMA*/	
 	/*Save caption and take picture to information gathering service*/
 	private void saveClicked() throws InterruptedException, ExecutionException, JSONException{
 		photoCaption = captionField.getText().toString();
 		photoPath = "photobook_files/" + photoName;
 		SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
-		    Date now = new Date();
-		    String strDate = sdfDate.format(now);
+	    Date now = new Date();
+	    String strDate = sdfDate.format(now);
 		    
 		timeStamp = strDate;
 		Toast.makeText(this, "Uploading Photo", Toast.LENGTH_SHORT).show();
 		uploadPhoto();		
 	}
-	
 	
 	private void uploadPhoto() throws InterruptedException, ExecutionException, JSONException{
 		
@@ -324,14 +316,11 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		
 	}
 
-
-	
 	/*Delete picture and restart - go back to stream?*/
 	private void delete(){
 		returnToStream();		
 	}
 	
-
 	@Override
 	protected void onStart()
 	{
@@ -444,7 +433,6 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		}
 	}
 
-
 	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
@@ -466,8 +454,6 @@ final Handler showContent = new Handler(new Handler.Callback() {
 		startActivity(returns);
 	}
 
-
-	
 	public String getAddressDetails(Context context, double latitude, double longitude)
 	{
 		String address = "";
@@ -505,5 +491,5 @@ final Handler showContent = new Handler(new Handler.Callback() {
 
 	}
 	
-/*END SUSHMA*/
+	/*END SUSHMA*/
 }

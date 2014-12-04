@@ -43,16 +43,12 @@ public class PictureStream extends Activity {
 	LinearLayout imageStream;
 	File photoStorage, photo;
 	Uri imageUri;
-	boolean firsttime = true;
-
 	String photoString, photoName, userName;
 	int userID;
-	
-	
-
 	int TAKE_PICTURE_REQUEST_CODE = 123456;
+	boolean firsttime = true;
 	
-/*START MOLLY*/
+	/*START MOLLY*/
 	/*Create menu with new photo option, logout, and refresh?*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,17 +73,17 @@ public class PictureStream extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 	}
-/*END MOLLY*/	
+	/*END MOLLY*/	
 	
-/*START SUSHMA*/
+	/*START SUSHMA*/
 	Handler streamHandler = new Handler(new Handler.Callback() {
-/*END SUSHMA*/		
+		/*END SUSHMA*/		
 		@Override
 		public boolean handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			try {
 				
-/*START MOLLY*/
+				/*START MOLLY*/
 				JSONArray picturesJson = (JSONArray)msg.obj;
 				
 				if(picturesJson != null){
@@ -103,7 +99,7 @@ public class PictureStream extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-/*END MOLLY*/			
+			/*END MOLLY*/			
 			return false;
 		}
 	});
@@ -115,7 +111,7 @@ public class PictureStream extends Activity {
 		firsttime = false;
 		//Show Welcome Message
 		
-/*START NEIL*/
+		/*START NEIL*/
 		GlobalPhoto globalVariable = (GlobalPhoto)getApplicationContext();
 		userName = globalVariable.getUserName();
 		userID = globalVariable.getUserID();
@@ -128,9 +124,9 @@ public class PictureStream extends Activity {
 			
 			globalVariable.setAgain(false);
 		}
-/*END NEIL*/		
+		/*END NEIL*/		
 		
-/*START MOLLY*/
+		/*START MOLLY*/
 		imageStream = (LinearLayout) findViewById(R.id.imageStream);
 		
 		/*Check for local directory of photos, if not create one*/

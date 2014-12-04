@@ -42,11 +42,9 @@ public class PictureViewer extends Activity {
 	TextView temperature, location, timeStamp, altitude, caption;
 	private String photoLocation;
 	JSONObject photoJson;
-	
-	
 	JSONParser jsonParse = new JSONParser();
 	
-/*START MOLLY*/
+	/*START MOLLY*/
 	/*Create menu with back button*/
 		@Override
 		public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,9 +63,7 @@ public class PictureViewer extends Activity {
 				return super.onOptionsItemSelected(item);
 			}
 		}
-		
 	
-		
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.picture_viewer);
@@ -89,19 +85,16 @@ public class PictureViewer extends Activity {
 		
 		/*Set text with values from photo*/
 		initialzeLoader();
-		
-		
-		
+
 		/* Display photo */
 		ImageView photoView = new ImageView(this);
 		RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
 			RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		lp.addRule(RelativeLayout.ABOVE, R.id.caption);
-		lp.setMargins(10,5, 10, 5);
+		lp.setMargins(10, 5, 10, 5);
 		photoView.setLayoutParams(lp);
-		
-		
-			ImageLoader.getInstance().displayImage(photoJson.getString("photoPath"), photoView);
+	
+		ImageLoader.getInstance().displayImage(photoJson.getString("photoPath"), photoView);
 		
 		picture.addView(photoView);
 			temperature.setText(photoJson.getString("locTemp"));
@@ -114,10 +107,6 @@ public class PictureViewer extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-		
-		
 		
 	}
 	
@@ -152,5 +141,5 @@ public class PictureViewer extends Activity {
         .build();
 		ImageLoader.getInstance().init(config);
 	}
-/*END MOLLY*/
+	/*END MOLLY*/
 }

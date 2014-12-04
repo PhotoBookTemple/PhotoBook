@@ -30,7 +30,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class StartScreen extends Activity {
-	
+	/*START NEIL*/
 	
 	/* OVERAL TO DO:	 
 	set left margins of each widget so that they are relative to background image and
@@ -41,19 +41,13 @@ public class StartScreen extends Activity {
 	Button signUp, login;
 	EditText username, password;
 	String userName, userPwd;
+	JSONParser jsonParser = new JSONParser();
 	int userID;
-    // Progress Dialog
     private ProgressDialog pDialog;
- 
     private static String url_login = "http://cis-linux2.temple.edu/~tuc69409/login.php";
-    final Context context = this;
-    
-    // JSON parser class
-    JSONParser jsonParser = new JSONParser();
-    
-    // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
+    final Context context = this;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -184,5 +178,5 @@ public class StartScreen extends Activity {
 		alertDialog.show();
 		Toast.makeText(StartScreen.this, message, Toast.LENGTH_LONG).show();
 	}
-	
+	/*END NEIL*/
 }

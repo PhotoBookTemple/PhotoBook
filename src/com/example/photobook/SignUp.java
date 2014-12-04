@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class SignUp extends Activity {
+	/*START NEIL*/
 	
 	/*Name Widgets*/
 	Button signUp;
@@ -37,17 +38,13 @@ public class SignUp extends Activity {
 	String userName, userPwd, userPwdConfirm;
 	int userID;
 	final Context context = this;
-	
     // Progress Dialog
     private ProgressDialog pDialog;
- 
     // JSON parser class
     JSONParser jsonParser = new JSONParser();
-    
-	// url to create new user
+	// url to create a new user
     private static String url_create_user = "http://cis-linux2.temple.edu/~tuc69409/create_user.php";
- 
-    // JSON Node names
+     // JSON Node names
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 	
@@ -65,11 +62,10 @@ public class SignUp extends Activity {
 		password = (EditText) findViewById(R.id.newPassword);
 		passwordConfirm = (EditText) findViewById(R.id.newPasswordConfirm);
 		
-			
 		/*Complete sign up*/
 		signUp.setOnClickListener(new View.OnClickListener() {
 			
-	//		@Override
+			//@Override
 			public void onClick(View v) {
 				/*Get user input*/
 				userName = username.getText().toString();
@@ -193,4 +189,6 @@ public class SignUp extends Activity {
 		alertDialog.show();
 		Toast.makeText(SignUp.this, message, Toast.LENGTH_LONG).show();
 	}
+	
+	/*END NEIL*/
 }
